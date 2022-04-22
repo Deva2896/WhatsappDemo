@@ -13,6 +13,9 @@ import { LoginModule } from './feature/login/login.module';
 import { HomeModule } from './feature/home/home.module';
 import { RegisterModule } from './feature/register/register.module';
 import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule, HomeModule, RegisterModule, HttpClientModule
+    ReactiveFormsModule,
+    LoginModule, HomeModule, RegisterModule, HttpClientModule, BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

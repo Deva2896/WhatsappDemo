@@ -10,8 +10,6 @@ export class ContactListService {
   }
 
   fetchConatctList() {
-    this.http.get('https://reqres.in/api/users?page=2').subscribe((resp) => {
-      console.log(resp)
-    })
+    return this.http.get('https://reqres.in/api/users?page=2');
   }
 }

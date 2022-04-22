@@ -1,1 +1,57 @@
-<p>register works!</p>
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form [formGroup]="registerForm" id="login-form" class="form" action="" method="post">
+                        <h3 class="text-center text-info">Register</h3>
+                        <div class="form-group">
+                            <label for="username" class="text-info">Username:</label><br>
+                            <input type="text" name="username" id="username" formControlName="username"
+                                class="form-control">
+                            <div *ngIf="form['username'].invalid && (form['username'].dirty || form['username'].touched)"
+                                class="error">Enter username
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-info">Password:</label><br>
+                            <input type="password" name="password" formControlName="password" id="password"
+                                class="form-control">
+                            <div *ngIf="form['password'].invalid && (form['password'].dirty || form['password'].touched)"
+                                class="error">Enter correct password
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="text-info">Phone:</label><br>
+                            <input type="number" name="phone" formControlName="phone" id="phone" class="form-control">
+                            <div *ngIf="form['phone'].invalid && (form['phone'].dirty || form['phone'].touched)"
+                                class="error">Enter phone number
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="text-info">Email:</label><br>
+                            <input type="email" name="email" formControlName="email" id="email" class="form-control">
+                            <div *ngIf="form['email'].invalid && (form['email'].dirty || form['email'].touched)"
+                                class="error">Enter email address
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country" class="text-info">Country:</label><br>
+                            <input type="text" name="password" formControlName="country" id="country"
+                                class="form-control">
+                            <div *ngIf="form['country'].invalid && (form['country'].dirty || form['country'].touched)"
+                                class="error">Enter your country
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="remember-me" class="text-info"></label>
+                            <button class="btn btn-info btn-md" (click)="submitForm()">Submit</button>
+                            <!-- <input type="submit" name="submit" class="btn btn-info btn-md" value="submit"> -->
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,7 +9,8 @@ const routes: Routes = [
     // children:[
 
     // ]
-  }
+  },
+
 ];
 
 @NgModule({
