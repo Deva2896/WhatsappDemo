@@ -15,6 +15,8 @@ import { RegisterModule } from './feature/register/register.module';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    LoginModule, HomeModule, RegisterModule, HttpClientModule, BrowserAnimationsModule
+    MatSelectModule,
+    LoginModule, HomeModule, RegisterModule, HttpClientModule, BrowserAnimationsModule, ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

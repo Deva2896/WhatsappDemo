@@ -11,12 +11,12 @@ export class SideBarComponent implements OnInit {
   constructor(private contactService: ContactListService) { }
 
   ngOnInit(): void {
-    this.contactService.fetchConatctList().subscribe(resp => {
-      console.log(resp)
-      this.concatList = resp;
-      console.log(this.concatList.data)
-      this.concatList = this.concatList.data
-    })
+    // this.contactService.fetchConatctList().subscribe(resp => {
+    //   console.log(resp)
+    //   this.concatList = resp;
+    //   console.log(this.concatList.data)
+    //   this.concatList = this.concatList.data
+    // })
   }
 
 }

@@ -9,7 +9,7 @@ export class ContactListService {
   constructor(private http: HttpClient) {
   }
 
-  fetchConatctList() {
-    return this.http.get('https://reqres.in/api/users?page=2');
+  fetchConatctList(page: number) {
+    return this.http.get('https://reqres.in/api/users?page=' + page);
   }
 }

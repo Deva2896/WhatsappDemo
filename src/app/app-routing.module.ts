@@ -9,7 +9,7 @@ const routes: Routes = [
     component: MainContainerComponent,
     children: [
       {
-        path: 'login',
+        path: '',
         loadChildren: () => import('./feature/login/login.module').then(m => m.LoginModule)
       },
       {
@@ -21,6 +21,9 @@ const routes: Routes = [
         loadChildren: () => import('./feature/register/register.module').then(m => m.RegisterModule)
       },
     ]
+  },
+  {
+    path: "", redirectTo: "/login", pathMatch: "full"
   }
 ];
 

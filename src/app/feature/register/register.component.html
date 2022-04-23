@@ -22,10 +22,25 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="fname" class="text-info">First name:</label><br>
+                            <input type="text" name="phone" formControlName="fname" id="fname" class="form-control">
+                            <div *ngIf="form['fname'].invalid && (form['fname'].dirty || form['fname'].touched)"
+                                class="error">Enter first name
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Lname" class="text-info">Last name:</label><br>
+                            <input type="text" name="lname" formControlName="lname" id="lname" class="form-control">
+                            <div *ngIf="form['lname'].invalid && (form['lname'].dirty || form['lname'].touched)"
+                                class="error">Enter last name
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="phone" class="text-info">Phone:</label><br>
                             <input type="number" name="phone" formControlName="phone" id="phone" class="form-control">
                             <div *ngIf="form['phone'].invalid && (form['phone'].dirty || form['phone'].touched)"
-                                class="error">Enter phone number
+                                class="error">Enter phone
+                                number
                             </div>
                         </div>
                         <div class="form-group">
@@ -44,8 +59,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="remember-me" class="text-info"></label>
-                            <button class="btn btn-info btn-md" (click)="submitForm()">Submit</button>
+                            <button class="btn btn-info btn-md" [disabled]="registerForm.invalid"
+                                (click)="submitForm()">Submit</button>
                             <!-- <input type="submit" name="submit" class="btn btn-info btn-md" value="submit"> -->
                         </div>
 
