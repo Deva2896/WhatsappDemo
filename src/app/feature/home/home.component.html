@@ -9,27 +9,41 @@
                 {{userInfo.fname}} {{userInfo.lname}}
             </div>
             <div class="col-md-4" style="margin-top: 1em;">
-                <mat-form-field>
+
+                <button mat-icon-button matTooltip="Language" (click)=select.open() style="background-color: #d1d7db;">
+
+                    <mat-icon style="color: black;">menu</mat-icon>
+
+                    <mat-select #select (selectionChange)="change($event)">
+                        <mat-option *ngFor="let item of Menu" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+
+                </button>
+
+                <!-- <mat-form-field>
                     <mat-label>Popup Menu</mat-label>
                     <mat-select (selectionChange)="change($event)">
                         <mat-option *ngFor="let item of Menu" [value]="item">
                             {{item}}
                         </mat-option>
                     </mat-select>
-                </mat-form-field>
+                </mat-form-field> -->
             </div>
         </div>
         <div class="row" style="height: 5%;">
-            <input type="search" (input)="search(input.value)" #input placeholder="Search by Name">
+            <input type="search" style="border-radius: 20px;" (input)="search(input.value)" #input
+                placeholder="Search by Name">
         </div>
         <div style="height: 80%;overflow-x: scroll;">
-            <ng-container *ngFor="let contact of contactList">
-                <div class="row" style="height: 70px;background-color:#e9edef;">
+            <ng-container *ngFor="let contact of contactList;let i = index">
+                <div class="row" style="height: 70px;">
                     <div class="col-md-2" style="margin-top: 1em;">
                         <img [src]="contact.avatar" alt="Avatar" class="avatar">
                     </div>
                     <!-- <div class="col-md-1"></div> -->
-                    <div class="col-md-8" (click)="showContact(contact)" style="margin-top:10px;cursor: pointer;">
+                    <div class="col-md-8" (click)="showContact(contact,i)" style="margin-top:10px;cursor: pointer;">
                         {{contact.first_name}} {{contact.last_name}}
                         <span>{{contact.email}}</span>
                     </div>
@@ -37,8 +51,8 @@
             </ng-container>
         </div>
     </div>
-    <div *ngIf="contactShow" class="col-md-9" style="height: 530px;width: 100%;background-color: white;">
-        <div *ngIf="contactShow" class="row" style="height: 80px;background-color:#d1d7db;">
+    <div *ngIf="contactShow" class="col-md-9" style="height: 100%;width: 100%;">
+        <div *ngIf="contactShow" class="row" style="height: 15%;background-color:#d1d7db;">
             <div class="col-md-1" style="margin-top: 1em;">
                 <img [src]="selecteCcontact.avatar" alt="Avatar" class="avatar">
             </div>
@@ -48,28 +62,53 @@
                 <!-- <span>{{selecteCcontact.email}}</span> -->
             </div>
         </div>
-        <div class="row">
-            <ng-container *ngFor="let chat of dummyChat">
-                <div class="container" *ngIf="chat && chat.from">
-                    <img [src]="selectedImageUrl" alt="Avatar" style="width:100%;">
-                    <p>{{chat.from}}</p>
-                </div>
+        <div style="height: 75%;">
+            <div class="row" style="height: auto">
+                <ng-container *ngFor="let chat of dummyChat" style="height: auto;overflow: scroll;">
+                    <div class="container" *ngIf="chat && chat.isSendByUser">
+                        <!-- <img [src]="selectedImageUrl" alt="Avatar" style="width:100%;"> -->
+                        <div class="row">
+                            <div class="col-md-10">{{chat.message}}</div>
+                            <div class="col-md-2">
+                                <p style="float: right;padding-top: 10px;font-size: 12px;">{{chat.time}}</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="container darker">
-                    <img src="assets/sir.jpg" alt="Avatar" class="right" style="width:100%;">
-                    <p>{{chat.to}}</p>
-                </div>
-            </ng-container>
+                    <div class="container darker" *ngIf="chat && !chat.isSendByUser">
+                        <!-- <img src="assets/sir.jpg" alt="Avatar" class="right" style="width:100%;"> -->
+                        <div class="row">
+                            <div class="col-md-10">{{chat.message}}</div>
+                            <div class="col-md-2">
+                                <p style="float: right;padding-top: 10px;font-size: 12px;">{{chat.time}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-11">
-                <input type="search" style="width: 100%;" #input1 placeholder="Enter">
+        <div class="row"
+            style="flex-grow: 1;margin-bottom: auto; align-self: flex-end;display: flex;height: 10%;margin-bottom: 0px;padding-bottom: 0px;background-color:#e9edef;">
+            <div style="padding-top: 10px; height: 100%;width: 100%;" class="row">
+                <div class="col-md-10">
+                    <input placeholder="Type a message." id="foobar" #input1 type="text"
+                        style="width: 100%;border-radius: 20px;" (blur)="onBlur()" (focus)="onFocus()" name="message"
+                        [(ngModel)]="message">
+                </div>
+                <div class="col-md-1">
+                    <button (click)="toggleEmojiPicker()" style="background-color:#e9edef;padding: 0px;"> 😀</button>
+                </div>
+                <div class="col-md-1">
+                    <span class="material-symbols-outlined" style="cursor: pointer;" (click)="sendChat(input1.value)">
+                        send
+                    </span>
+                </div>
             </div>
-            <div class="col-md-1">
-                <span class="material-symbols-outlined" style="cursor: pointer;" (click)="sendChat(input1.value)">
-                    send
-                </span>
-            </div>
+        </div>
+        <div class="row" style="width: 100%;">
+            <emoji-mart class="emoji-mart" *ngIf="showEmojiPicker" (emojiSelect)="addEmoji($event)"
+                title="Pick your emoji…">
+            </emoji-mart>
         </div>
     </div>
     <div *ngIf="showProfile" class="col-md-9" style="height: 530px;width: 100%;background-color: white;">

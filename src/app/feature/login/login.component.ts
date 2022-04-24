@@ -50,4 +50,10 @@ export class LoginComponent implements OnInit {
   register() {
     this.router.navigateByUrl('/register');
   }
+
+
+  // isMe =true
+  // textMessage="hi"
+  // sentTime="12-22"
+
 }

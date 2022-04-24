@@ -17,7 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MatSelectModule } from '@angular/material/select';
-
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,10 +31,13 @@ import { MatSelectModule } from '@angular/material/select';
     HeaderComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatSelectModule,
+    PickerModule,
+    MatIconModule,
     LoginModule, HomeModule, RegisterModule, HttpClientModule, BrowserAnimationsModule, ToastrModule.forRoot(),
   ],
   providers: [],
