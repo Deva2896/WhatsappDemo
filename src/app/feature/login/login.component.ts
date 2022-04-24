@@ -13,7 +13,8 @@ FormBuilder
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
-
+  loginSuccess: boolean = false;
+  loginUnsuccess: boolean = false;
   constructor(
     private _formBuilder: FormBuilder,
     private contactService: ContactListService,
@@ -38,12 +39,19 @@ export class LoginComponent implements OnInit {
     let userValue = this.loginForm.value;
     let userInfo = JSON.parse(sessionStorage.getItem('loginValue') || '{}')
     if (userValue.username === userInfo.username && userValue.password === userInfo.password) {
-      this.router.navigateByUrl('/home');
+      this.loginSuccess = true;
+      setTimeout(() => {                           //<<<---using ()=> syntax
+        this.loginSuccess = false;
+        this.router.navigateByUrl('/home');
+      }, 1000);
       // this.toastr.success('Success', 'Login Successfully');
     }
     else {
       console.log("Not Match");
-      alert("Login Unsuccessfull")
+      this.loginUnsuccess = true;
+      setTimeout(() => {                           //<<<---using ()=> syntax
+        this.loginUnsuccess = false;
+      }, 3000);
       // this.toastr.success('Error', 'Login Failed');
     }
   }

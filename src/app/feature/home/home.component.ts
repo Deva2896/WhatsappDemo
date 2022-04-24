@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
       })
       this.originalContactList = JSON.parse(JSON.stringify(this.contactList));
       this.originalContactList.forEach((element: any) => {
-        element['chat'] = JSON.parse(JSON.stringify(this.dummyChat));
+        element['chat'] = JSON.parse(JSON.stringify(this.dummyChat))
       })
       console.log(this.originalContactList);
     })
